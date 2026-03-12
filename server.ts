@@ -78,6 +78,23 @@ app.post("/api/analyze-meal", async (req, res) => {
     res.status(500).json({ error: "Analysis failed" });
   }
 });
+
+app.patch("/api/habit/mood", async (req, res) => {
+  const today = new Date().toISOString().split('T')[0];
+  mockUser.ecoCoins += 10;
+  mockHabits[today].moodLogged = true;
+  res.json({ user: mockUser, habit: mockHabits[today] });
+});
+
+app.patch("/api/habit/cards", async (req, res) => {
+  const today = new Date().toISOString().split('T')[0];
+  mockUser.ecoCoins += 20;
+  mockHabits[today].cardsRead += 1;
+  if (mockHabits[today].cardsRead >= 3 && !mockUser.unlockedSDGs.includes(5)) {
+    mockUser.unlockedSDGs.push(5);
+  }
+  res.json({ user: mockUser, habit: mockHabits[today] });
+});
  
 // Middle Where 
 async function startServer() {

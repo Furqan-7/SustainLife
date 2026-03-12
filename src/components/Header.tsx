@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ userData }) => {
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2 text-[#a8d61f]">
             <Leaf className="w-8 h-8 fill-current" />
-            <h2 className="text-slate-900 text-xl font-extrabold tracking-tight">GreenLife</h2>
+            <h2 className="text-slate-900 text-xl font-extrabold tracking-tight">SustainLife</h2>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <a className="text-slate-900 font-semibold border-b-2 border-[#a8d61f] pb-1" href="#">Dashboard</a>
