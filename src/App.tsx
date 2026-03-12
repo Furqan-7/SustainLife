@@ -9,6 +9,7 @@ import SDGImpact from './components/SDGImpact';
 import DailyQuests from './components/DailyQuests';
 import HydrationTracker from './components/HydrationTracker';
 import MealCard from './components/MealCard';
+import VendorDashboard from './components/VendorDashboard';
 import { UserData, HabitData, AnalysisResult } from './types';
 
 export default function App() {
@@ -30,8 +31,8 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn) fetchDashboard();
-  }, [isLoggedIn]);
+    if (isLoggedIn && userRole === 'user') fetchDashboard();
+  }, [isLoggedIn, userRole]);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -88,6 +89,7 @@ export default function App() {
   };
 
   if (!isLoggedIn) return <Login onLogin={handleLogin} />;
+  if (userRole === 'vendor') return <VendorDashboard />;
   if (!userData || !habitData) return null;
 
   return (
@@ -186,6 +188,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+
     </div>
   );
 }
